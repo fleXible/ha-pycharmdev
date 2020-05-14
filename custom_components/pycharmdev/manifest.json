@@ -1,0 +1,8 @@
+{
+  "domain": "pycharmdev",
+  "name": "pycharmdev",
+  "documentation": "https://github.com/fleXible/ha-pycharmdev",
+  "dependencies": [],
+  "codeowners": ["@fleXible"],
+  "requirements": ["pydevd-pycharm==193.6494.30"]
+}
