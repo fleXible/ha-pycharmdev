@@ -27,6 +27,7 @@ SERVICE_SCHEMA = vol.Schema({})
 
 async def async_setup(hass, config):
     """Set up pycharmdev integration."""
+    _LOGGER.debug("Begin setup PyCharm Remote Debugger")
     conf = config.get(DOMAIN)
     if conf is None:
         conf = CONFIG_SCHEMA({DOMAIN: {}})[DOMAIN]
@@ -37,12 +38,18 @@ async def async_setup(hass, config):
     async def async_start_debugger(service):
         try:
             import pydevd_pycharm
-            logging.info(f"Activating PyCharm Remote Debugger for {host}:{port}")
-            pydevd_pycharm.settrace(host=host, port=port, stdoutToServer=True,
-                                    stderrToServer=True, suspend=False,
-                                    patch_multiprocessing=False)
+
+            _LOGGER.info(f"Activating PyCharm Remote Debugger for {host}:{port}")
+            pydevd_pycharm.settrace(
+                host=host,
+                port=port,
+                stdoutToServer=True,
+                stderrToServer=True,
+                suspend=False,
+                patch_multiprocessing=False,
+            )
         except Exception as e:
-            logging.error("Failed to setup PyCharm Remote Debugger:\n%s", e)
+            _LOGGER.error("Failed to setup PyCharm Remote Debugger:\n%s", e)
 
     hass.services.async_register(
         DOMAIN, "start", async_start_debugger, schema=SERVICE_SCHEMA
