@@ -1,1 +1,1 @@
-pydevd-pycharm~=251.25410.67
+pydevd-pycharm~=251.26927.54
