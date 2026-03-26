@@ -5,5 +5,5 @@
   "documentation": "https://github.com/fleXible/ha-pycharmdev",
   "dependencies": [],
   "codeowners": ["@fleXible"],
-  "requirements": ["pydevd-pycharm~=201.7846.77"]
+  "requirements": ["pydevd-pycharm~=201.8743.20"]
 }
